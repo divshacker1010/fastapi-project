@@ -1,0 +1,6 @@
+fastapi
+passlib
+pwdlib
+bcrypt
+pwdlib[argon2]
+fastapi[standard]
