@@ -4,3 +4,4 @@ pwdlib
 bcrypt
 pwdlib[argon2]
 fastapi[standard]
+pyjwt

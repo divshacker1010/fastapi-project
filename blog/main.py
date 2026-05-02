@@ -7,7 +7,7 @@ from .db import models
 from .db.database import create_db_and_tables, engine, get_session, SessionDep
 # from passlib.context import CryptContext
 # from pwdlib import PasswordHash
-from .routers import blog, user
+from .routers import blog, user, authentication
 
 
 app = FastAPI()
@@ -39,6 +39,7 @@ def read_item(item_id: int, q: str | None=None):
 # def fetch_blog(db: SessionDep):
 #     blogs = db.exec(select(models.Blog)).all()
 #     return blogs
+app.include_router(authentication.router)
 app.include_router(blog.router)
 app.include_router(user.router)
 

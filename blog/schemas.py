@@ -70,6 +70,18 @@ class BuildingUpdate(BaseModel):
     address: Optional[str] = None
     owner_id: Optional[int] = None
 
+class Login(BaseModel):
+    username: str
+    password: str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    email: str | None = None
+
 # class OwnerUpdate(BaseModel):
 #     name: Optional[str]
 #     email: Optional[str]

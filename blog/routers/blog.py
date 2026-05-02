@@ -7,7 +7,7 @@ from blog.db import models
 from ..db.database import SessionDep
 from sqlmodel import Session, select
 from ..repositories import blog
-
+from ..repositories import oauth2
 # from ..dependencies import get_token_header
 
 router = APIRouter(
@@ -16,7 +16,7 @@ router = APIRouter(
 )
 
 @router.get("/", response_model=list[schemas.ShowBlog])
-def fetch_blog(db: SessionDep):
+def fetch_blog(db: SessionDep, current_user: schemas.User = Depends(oauth2.get_current_user)):
     return blog.get_all(db)
 
 @router.get("/published")
