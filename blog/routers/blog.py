@@ -19,7 +19,7 @@ router = APIRouter(
 def fetch_blog(db: SessionDep, current_user: schemas.User = Depends(oauth2.get_current_user)):
     return blog.get_all(db)
 
-@router.get("/published", )
+@router.get("/published")
 def fetch_published(db: SessionDep, current_user: schemas.User = Depends(oauth2.get_current_user)):
     return blog.published(db)
 
