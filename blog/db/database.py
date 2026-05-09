@@ -6,7 +6,6 @@ from fastapi.params import Depends
 from typing_extensions import Annotated
 
 from sqlmodel import MetaData, Session, SQLModel, create_engine
-from pathlib import Path
 
 
 
@@ -16,13 +15,14 @@ from pathlib import Path
 #     age: int | None = Field(default=None, index=True)
 #     secret_name: str
 
-db_dir = Path(__file__).parent
-sqlite_file_name = db_dir / "blog.db"
-sqlite_url = f"sqlite:///{sqlite_file_name}"
+import os
 
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql://postgres:postgres@localhost:5432/blogdb"
+)
 
-connect_args = {"check_same_thread": False}
-engine = create_engine(sqlite_url, connect_args=connect_args)
+engine = create_engine(DATABASE_URL)
 
 def create_db_and_tables():
     # print("metadata=",MetaData())

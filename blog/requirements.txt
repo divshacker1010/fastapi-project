@@ -5,3 +5,5 @@ bcrypt
 pwdlib[argon2]
 fastapi[standard]
 pyjwt
+psycopg2-binary
+sqlmodel
